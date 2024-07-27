@@ -1,0 +1,32 @@
+﻿@model MyContacts.Models.Contact
+
+@{
+    ViewBag.Title = "Coordonnées";
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>Prénom</th>
+        <td>@Html.DisplayFor(model => model.FirstName)</td>
+    </tr>
+    <tr>
+        <th>Nom de famille</th>
+        <td>@Html.DisplayFor(model => model.LastName)</td>
+    </tr>
+    <tr>
+        <th>E-mail</th>
+        <td>@Html.DisplayFor(model => model.Email)</td>
+    </tr>
+    <tr>
+        <th>Numéro de téléphone</th>
+        <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+    </tr>
+    <tr>
+        <th>Catégorie</th>
+        <td>@Html.DisplayFor(model => model.Category.Name)</td>
+    </tr>
+    <tr>
+        <th>Date ajoutée</th>
+        <td>@Model.DateAdded.ToShortDateString()</td>
+    </tr>
+</table>

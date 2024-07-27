@@ -1,0 +1,47 @@
+﻿@model MyContacts.Models.Contact
+
+@{
+    ViewBag.Title = ViewBag.Action;
+}
+
+<form asp-action="AddEdit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingFirstName" asp-for="FirstName" placeholder="Prénom">
+        <label for="floatingFirstName">Prénom</label>
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingLastName" asp-for="LastName" placeholder="Nom de famille">
+        <label for="floatingLastName">Nom de famille</label>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingPhoneNumber" asp-for="PhoneNumber" placeholder="Numéro de téléphone">
+        <label for="floatingPhoneNumber">Numéro de téléphone</label>
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input class="form-control" id="floatingEmail" asp-for="Email" placeholder="E-mail">
+        <label for="floatingEmail">E-mail</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">Sélectionner une catégorie</option>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.CategoryId">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="ContactId" />
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>

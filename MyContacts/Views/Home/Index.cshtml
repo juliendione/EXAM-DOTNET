@@ -1,0 +1,46 @@
+﻿@model List<MyContacts.Models.Contact>
+
+@{
+    ViewData["Title"] = "Liste de contacts";
+}
+
+<a class="btn btn-primary" asp-controller="Contact" asp-action="Add">Ajouter un contact</a>
+
+<table class="table">
+    <tr>
+        <th>
+            Prénom
+        </th>
+        <th>
+            Nom de famille
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Email)
+        </th>
+        <th>
+            Numéro de téléphone
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a asp-controller="Contact" asp-action="Edit" asp-route-id="@item.ContactId">@Html.DisplayFor(modelItem => item.FirstName)</a>
+            </td>
+            <td>
+                <a asp-controller="Contact" asp-action="Edit" asp-route-id="@item.ContactId">@Html.DisplayFor(modelItem => item.LastName)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <a asp-controller="Contact" asp-action="Details" asp-route-id="@item.ContactId">Détails</a> |
+                <a asp-controller="Contact" asp-action="Delete" asp-route-id="@item.ContactId">Supprimer</a>
+            </td>
+        </tr>
+    }
+</table>
